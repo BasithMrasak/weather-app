@@ -1,6 +1,7 @@
 from flask import Flask, render_template,request,redirect, url_for
 import requests
-from config import API_KEY
+import os
+API_KEY = os.environ.get("API_KEY")
 
 app=Flask(__name__)
 
