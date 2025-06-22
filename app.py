@@ -1,7 +1,11 @@
 from flask import Flask, render_template,request,redirect, url_for
 import requests
+from dotenv import load_dotenv
+load_dotenv()
 import os
+
 API_KEY = os.environ.get("API_KEY")
+
 
 app=Flask(__name__)
 

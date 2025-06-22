@@ -6,6 +6,9 @@
     <title>Weather App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+<div id="loading" style="display:none;">
+    <div class="spinner"></div>
+</div>
 
 <body>
     <div class="container">
@@ -29,31 +32,43 @@
         </section>
     </div>
     <script>
-        console.log("Script loaded!");
+        function showSpinner() {
+            document.getElementById("loading").style.display = "flex";
+        }
+
+        function hideSpinner() {
+            document.getElementById("loading").style.display = "none";
+        }
 
         function getLocation() {
-            console.log("Button clicked");
+            showSpinner(); // show spinner immediately
 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(success, error);
             } else {
-                alert("Geolocation is not supported by this browser.");
+                alert("Geolocation not supported.");
+                hideSpinner();
             }
         }
 
         function success(position) {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
-            console.log("Latitude:", lat, "Longitude:", lon);
-
-            // ✅ Correct syntax: Use backticks
             window.location.href = `/weather?lat=${lat}&lon=${lon}`;
         }
 
         function error(err) {
-            console.error("Geolocation error:", err);
+            hideSpinner();
             alert("Geolocation error: " + err.message);
         }
+
+        // For manual form submit
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelector("form")?.addEventListener("submit", () => {
+                showSpinner();
+            });
+        });
+
     </script>
 
 </body>
