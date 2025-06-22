@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom left, #0077be 0%, #60b7e2 35%, #e6f4fb 60%, #ffffff 80%);
+            font-family: 'Segoe UI', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    {% if weather %}
+    <div class="weather-box">
+        <h2>{{ weather.city }}, {{ weather.country }}</h2>
+        <img src="https:{{ weather.icon }}" alt="Weather Icon">
+        <p>{{ weather.condition }}</p>
+        <p>Temperature: {{ weather.temp }}°C</p>
+        <p>Humidity: {{ weather.humidity }}%</p>
+        <p>Wind: {{ weather.wind }} km/h</p>
+        <p>Local Time: {{ weather.localtime }}</p>
+    </div>
+    {% elif error %}
+    <div class="weather-box">
+        <p style="color:red;">Error: {{ error }}</p>
+    </div>
+    {% endif %}
+</body>
+
+</html>

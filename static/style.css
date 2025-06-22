@@ -1,0 +1,204 @@
+body {
+  background: linear-gradient(to bottom left,
+      #0077be 0%,
+      #60b7e2 35%,
+      #e6f4fb 60%,
+      #ffffff 80%);
+  height: 100vh;
+  margin: 0;
+  font-family: "Helvetica", sans-serif;
+  text-align: center;
+  padding: 30px;
+  /* background: linear-gradient(to bottom left, #0077be 0%, #60b7e2 35%, #e6f4fb 60%, #ffffff 80%);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  
+  align-items: center;
+  
+  font-family: "Segoe UI", sans-serif;*/
+}
+
+/*.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}*/
+
+
+.title {
+  color: #005c99;
+  /* deep soft blue */
+  font-size: 2.34rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.card {
+  padding: 5rem;
+  background: linear-gradient(to bottom right, rgba(240, 248, 255, 0.85), rgba(230, 244, 251, 0.9));
+  border-radius: 2rem;
+  gap: 1.5rem;
+  display: grid;
+  grid-template: 'title icon' 'content content' 'bar bar' / 1fr auto;
+  font-family: system-ui, sans-serif;
+  color: #005c99;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    inset -2px 2px hsl(0 0% 100% / 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  /* for Safari */
+}
+
+
+input[type="text"] {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px 20px;
+  margin: 12px 0;
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 251, 255);
+  border-radius: 4px;
+  text-align: center;
+  /* optional: center text inside the box */
+}
+
+
+
+#submit {
+  background-color: #04AA6D;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+#btn_getweather {
+  background-color: #04AA6D;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+
+/*.weather-box {
+  background: rgba(255, 255, 255, 0.25);
+ 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+ 
+  max-width: 420px;
+  min-height: 380px;
+  border-radius: 20px;
+  padding: 30px 32px;
+  max-width: 420px;
+  margin: auto;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #003d66;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  transition: all 0.3s ease-in-out;
+
+}*/
+.weather-box {
+  width: 100%;
+  max-width: 420px;
+  min-height: 380px;
+  /* minimum height to prevent shrinking */
+  height: auto;
+  /* allows growth if needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* vertical center */
+  align-items: center;
+  /* horizontal center */
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px 32px;
+  margin: auto;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #003d66;
+  line-height: 1.6;
+  transition: all 0.3s ease-in-out;
+  overflow-wrap: break-word;
+}
+
+.weather-box img {
+  height: 64px;
+}
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 20px;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1.5rem;
+  }
+
+  .card,
+  .weather-box {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  #btn_getweather,
+  #submit {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .weather-box img {
+    height: 48px;
+  }
+
+}

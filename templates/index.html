@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>WEATHER APP</h1>
+        </div>
+
+        <section>
+            <div class="grid-container">
+                <div class="card">
+                    <form method="post" action="/weather">
+                        <label>
+                            <input type="text" id="city_txt" name="city" placeholder="Enter your city name" required>
+                        </label>
+                        <br><br>
+                        <button type="submit" id="btn_getweather">Get Weather</button>
+                        <button type="button" id="submit" onclick="getLocation()">Use My Location</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        console.log("Script loaded!");
+
+        function getLocation() {
+            console.log("Button clicked");
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(success, error);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function success(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            console.log("Latitude:", lat, "Longitude:", lon);
+
+            // ✅ Correct syntax: Use backticks
+            window.location.href = `/weather?lat=${lat}&lon=${lon}`;
+        }
+
+        function error(err) {
+            console.error("Geolocation error:", err);
+            alert("Geolocation error: " + err.message);
+        }
+    </script>
+
+</body>
+
+</html>
