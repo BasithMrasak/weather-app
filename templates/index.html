@@ -6,9 +6,8 @@
     <title>Weather App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<div id="loading" style="display:none;">
-    <div class="spinner"></div>
-</div>
+<div id="spinner" class="spinner" style="display: none;"></div>
+
 
 <body>
     <div class="container">
@@ -33,23 +32,26 @@
     </div>
     <script>
         function showSpinner() {
-            document.getElementById("loading").style.display = "flex";
+            document.getElementById("spinner").style.display = "block";
         }
 
         function hideSpinner() {
             document.getElementById("loading").style.display = "none";
         }
-
+        // ✅ Ensures spinner hides even when navigating back using browser buttons
+        window.addEventListener("pageshow", function () {
+            document.getElementById("spinner").style.display = "none";
+        });
         function getLocation() {
-            showSpinner(); // show spinner immediately
-
+            document.getElementById("spinner").style.display = "block";
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(success, error);
             } else {
-                alert("Geolocation not supported.");
-                hideSpinner();
+                alert("Geolocation is not supported by this browser.");
+                document.getElementById("spinner").style.display = "none";
             }
         }
+
 
         function success(position) {
             const lat = position.coords.latitude;
